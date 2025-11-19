@@ -1,0 +1,9 @@
+<h1>Formulario de tareas</h1>
+<a href="{% url 'tareas' %}">Volver</a>
+<!-- method = metodo http, action = donde envio los datos del formulario  -->
+<form method="POST" action="">
+    <!-- form, form.as_table, form.as_p, form.as_ul-->
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Enviar">
+</form>

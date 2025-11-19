@@ -1,0 +1,46 @@
+{% if request.user.is_authenticated %}
+    <!-- Muestra el nombre de usuario -->
+    <p>{{request.user}}</p>
+    <!-- No se puede mandar como href pq es un get, y no django5+ no acepta get, acepta post -->
+    <!-- <a href="{% url 'logout' %}">Salir</a> -->
+    <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Salir</button>
+    </form>
+{% else %}
+    <a href="{% url 'login' %}">Ingresa</a>
+{% endif %}
+<hr>
+
+<h1>Lista de tareas pendientes</h1>
+<a href="{% url 'crear-tarea' %}"> Crear nueva tarea </a>
+<table>
+    <!-- Nombre x columna -->
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Enlace a Tarea</th>
+            <th>Editar Tarea</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+
+    <!-- Cuerpo de la tabla -->
+    <tbody>
+        <!-- Recorre los registros en la base de datos Tarea -->
+        {% for tarea in tareas %}
+        <!-- <tr> es el cuerpo de la tabla -> td es lo que escribo en cada columna -->
+        <tr>
+            <td>{{ tarea.titulo }}</td>
+            <!-- url 'nameUrl' <CosaConcatenada>. En este caso concatena 'detalle', que es el name asociado a la url detalle-tarea, con tarea.id -->
+            <td><a href="{%url 'detalle' tarea.id%}">Ver</a></td>
+            <td><a href="{%url 'editar-tarea' tarea.id%}">Editar</a></td>
+            <td><a href="{%url 'eliminar-tarea' tarea.id%}">Eliminar</a></td>
+        </tr>
+
+        <!-- En caso de que la BD esté vacía -->
+        {% empty %}
+        <h2> No hay elementos en la lista de tareas </h2>
+        {% endfor %}
+    </tbody>
+</table>

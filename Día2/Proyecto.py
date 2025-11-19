@@ -1,0 +1,1 @@
+print(f"Hola {input("Por favor, dime tu Nombre: ")} tu comisión corresponde al monto de ${round(float(input("Ventas totales del mes: ")) * 0.13,2)}")
