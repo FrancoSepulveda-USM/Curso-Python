@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         #Esto es para indicar donde estan las plantillas.
-        'DIRS': ['C:\\Users\\franc\\Documents\\Escritorio\\Pycharm\\Día16_WebDjango\\mi_web\\src\\Proyecto\\base\\templates'],
+        'DIRS': ['C:\\Users\\franc\\Documents\\Escritorio\\Pycharm\\Curso-python\\Día16_WebDjango\\mi_web\\src\\Proyecto\\base\\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,13 +105,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#Idioma de Django dentro de la página 
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
+
+LOGIN_URL = 'login'
 
 
 # Static files (CSS, JavaScript, Images)
